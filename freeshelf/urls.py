@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from app import views as app_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', app_views.home, name='home')
+    path('books/add/', app_views.add_book, name='add_book'),
+    path('books/<int:pk>/', app_views.show_book, name='show_book'),
+    path('books/<int:pk>/edit/', app_views.edit_book, name='edit_book'),
+    path('books/<int:pk>/delete/', app_views.delete_book, name='delete_book'),
 ]
 
 if settings.DEBUG:
